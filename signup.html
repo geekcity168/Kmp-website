@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimai Primary</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Add custom styles here */
+    .sidebar.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Kimai Primary & JSS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <div class="sign-up-container">
+        <form action="">
+            <legend>Sign Up</legend>
+            <label for="fullName">Full Name</label>
+            <input type="text" name="fullname" id="fullName" required>
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" required>
+            <label for="phoneNumber">Phone Number</label>
+            <input type="tel" name="phone" id="phoneNumber">
+            <label for="accType">Account Type</label>
+            <select id="accType" name="accType" onchange="showAdditionalFields(this)">
+                <option value="teacher">Teacher</option>
+                <option value="parent">Parent</option>
+                <option value="student">Student</option>
+            </select>
+            <div id="additionalFields"></div>
+            <button type="button" onclick="showLoadingModal()">Sign up</button>
+            <a href="login.html" id="logOption">Already have an Account?</a>
+        </form>
+        
+        <script>
+            function showAdditionalFields(selectElement) {
+                var selectedOption = selectElement.value;     
+                var additionalFieldsDiv = document.getElementById("additionalFields");
+                additionalFieldsDiv.innerHTML = ""; // Clear previous additional fields
+                var loadingMessage = "";
+
+                switch (selectedOption) {
+                    case "teacher":
+                        loadingMessage = "Redirecting to the Teachers Arena...";
+                        break;
+                    case "student":
+                        loadingMessage = "Redirecting to students E-Learning Page...";
+                        break;
+                    case "parent":
+                        loadingMessage = "Redirecting to Parents Page...";
+                        break;
+                    default:
+                        break;
+                }
+
+                $('#loadingModal .modal-body p').text(loadingMessage);
+                
+                if (selectedOption === "teacher") {
+                    additionalFieldsDiv.innerHTML = `
+                        <label for="rank">Select Rank</label>
+                        <select id="rank" name="rank">
+                            <option value="Headteacher">Headteacher</option>
+                            <option value="Deputy Headteacher">Deputy Headteacher</option>
+                            <option value="Senior teacher">Senior teacher</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    `;
+                } else if (selectedOption === "parent") {
+                    additionalFieldsDiv.innerHTML = `
+                        <label for="numOfPupils">How many pupils do you have in the school?</label>
+                        <select id="numOfPupils" name="numOfPupils">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    `;
+                } else if (selectedOption === "student") {
+                    additionalFieldsDiv.innerHTML = `
+                        <label for="grade">Which grade are you in?</label>
+                        <select id="grade" name="grade">
+                            <option value="Pre-School">Pre-School</option>
+                            <option value="Grade 1">Grade 1</option>
+                            <option value="Grade 2">Grade 2</option>
+                            <option value="Grade 3">Grade 3</option>
+                            <option value="Grade 4">Grade 4</option>
+                            <option value="Grade 5">Grade 5</option>
+                            <option value="Grade 6">Grade 6</option>
+                            <option value="Grade 7">Grade 7</option>
+                        </select>
+                    `;
+                }
+            }
+
+        </script>        
+    </div>
+    <a href="login.html" class="login-link">
+        <i class="fas fa-user"></i> Login
+    </a>
+  </main>
+
+  <!-- Loading Modal -->
+  <div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <p>Loading...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Set Password Modal -->
+  <div class="modal" id="setPasswordModal" tabindex="-1" role="dialog" aria-labelledby="setPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="setPasswordModalLabel">Set Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="password">Enter Password</label>
+              <input type="password" class="form-control" id="password">
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" class="form-control" id="confirmPassword">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="validate()">Save Password</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function validate() {
+        var password = document.getElementById("password").value.trim();
+        var confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+        if (password === "" || confirmPassword === "") {
+            alert("Please input both password fields");
+        } else if (password === confirmPassword) {  
+            alert("Password created successfully");
+            redirect();
+        } else {
+            alert("Password mismatch");
+        }
+    }
+
+    function redirect() {
+        var accType = document.getElementById("accType").value;
+        var redirectPage = "";
+
+        switch (accType) {
+            case "teacher":
+                redirectPage = "t001.html";
+                break;
+            case "student":
+                redirectPage = "s001.html";
+                break;
+            case "parent":
+                redirectPage = "p001.html";
+                break;
+            default:
+                break;
+        }
+
+        window.location.href = redirectPage;
+    }
+
+    function showLoadingModal() {
+        // Check if required fields are not empty
+        var fullName = document.getElementById("fullName").value;
+        var email = document.getElementById("email").value;
+
+        if (fullName.trim() === "" || email.trim() === "") {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        // Show loading modal
+        $('#loadingModal').modal('show');
+        setTimeout(function() {
+            $('#loadingModal').modal('hide');
+            $('#setPasswordModal').modal('show');
+        }, Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000); // Random delay between 5 to 10 seconds
+    }
+
+  </script>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <span class="text-muted">© 2024 Kimai Primary and Junior Secondary School</span>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

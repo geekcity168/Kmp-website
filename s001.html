@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimai Primary</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Add custom styles here */
+    .sidebar.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Kimai Primary & JSS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h3>Dashboard</h3>
+    <hr>
+    <ul class="list-unstyled">
+      <li><a href="#"><i class="fas fa-cog"></i> Administrator Panel</a></li>
+      <li><a href="#"><i class="fas fa-chalkboard-teacher"></i> Teachers Panel</a></li>
+      <li><a href="#"><i class="fas fa-users"></i> Parents & Students</a></li>
+      <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </div>
+  <div class="grade-list">
+    <ul>
+        <li class="day-care"><img src="img/pre-school.webp" alt=""></li>
+        <li class="grade-one"><img src="img/grade1.jpeg" alt=""></li>
+        <li class="grade-two"><img src="img/grade2.png" alt=""></li>
+        <li class="grade-three"><img src="img/grade3.png" alt=""></li>
+        <li class="grade-four"><img src="img/grade4.png" alt=""></li>
+        <li class="grade-five"><img src="img/grade-5.webp" alt=""></li>
+        <li class="grade-six"><img src="img/grade6.png" alt=""></li>
+        <li class="grade-seven"><img src="img/grade7.webp" alt=""></li>
+    </ul>
+
+  </div>
+  <div class="learning-area day-care-cont">
+    <h2>Kimai Primary Pre-School</h2>
+  </div>
+
+  <!-- Button to toggle sidebar -->
+  <button class="btn btn-primary" id="sidebarToggleBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+  
+
+  
+  
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container text-center">
+      <span class="text-muted">© 2024 Kimai Primary and Junior Secondary School</span>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#sidebarToggleBtn').click(function() {
+        $('#sidebar').toggleClass('active');
+      });
+    });
+  </script>
+</body>
+</html>
